@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Mon Super Blog</title>
+</head>
+<body>
+    <h1>Liste des derniers articles</h1>
+
+    <% if (articles.length > 0) { %>
+        
+        <% articles.forEach(function(article) { %>
+            <article style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px;">
+                <h2>
+                    <a href="/article/<%= article.id_article %>"><%= article.titre %></a>
+                </h2>
+                
+                <p>
+                    <strong>Auteur :</strong> <%= article.nom_auteur %> | 
+                    <strong>Catégorie :</strong> <%= article.nom_categorie %>
+                </p>
+                <p>
+                    <em>Publié le : <%= new Date(article.date_publication).toLocaleDateString('fr-FR') %></em>
+                </p>
+                
+                <p>
+                    <%= article.apercu %>...
+                </p>
+            </article>
+        <% }); %>
+
+    <% } else { %>
+        <p>Aucun article n'a été trouvé pour le moment.</p>
+    <% } %>
+
+</body>
+</html>
